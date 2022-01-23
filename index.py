@@ -18,6 +18,7 @@ ct = c['threshold']
 ch = c['home']
 pause = c['time_intervals']['interval_between_moviments']
 pyautogui.PAUSE = pause
+pyautogui.FAILSAFE= False
 
 cat = """
                                                 _
@@ -490,6 +491,8 @@ def main():
 
         if now - last["check_for_captcha"] > addRandomness(t['check_for_captcha'] * 60):
             last["check_for_captcha"] = now
+            logger('!!!!!!!!! RESTART !!!!!!!!!!')
+            pyautogui.hotkey('ctrl','f5')
 
         if now - last["heroes"] > addRandomness(t['send_heroes_for_work'] * 60):
             last["heroes"] = now
